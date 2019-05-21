@@ -116,16 +116,16 @@ $(document).ready(function() {
         })();
 
 
-    }, 2000);
+    }, 0);
 
 
     var screen = $(window).width();
 
     //calls drawdots whenever screen is not ipad/tablet
-    var is_iPad = navigator.userAgent.match(/iPad/i) != null;
-    if (is_iPad == false) {
-        drawDots();
-    }
+    // var is_iPad = navigator.userAgent.match(/iPad/i) != null;
+    // if (is_iPad == false) {
+    //     drawDots();
+    // }
 
     //draws particles on html
     function drawDots() {

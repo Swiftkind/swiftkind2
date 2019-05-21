@@ -1,0 +1,17 @@
+.avatar{
+	background: {
+		size: cover;
+		position: center;
+	}
+	border-radius: 50%;
+	&-sm{
+		@extend .avatar;
+		width: torem(50);
+		height: torem(50);
+	}
+	&-md{
+		@extend .avatar;
+		width: torem(100);
+		height: torem(100);
+	}
+}
