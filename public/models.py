@@ -103,6 +103,8 @@ class TeamMembersPage(Page):
     members = ParentalManyToManyField(
         settings.AUTH_USER_MODEL,
         blank=True)
+    description = models.TextField(blank=True, null=True)
     content_panels = Page.content_panels + [
+        FieldPanel('description'),
         FieldPanel('members', widget=forms.CheckboxSelectMultiple)
     ]
