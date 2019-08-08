@@ -63,7 +63,7 @@
                                 {% endif %}
                                 <a href="" class="title-strong h5">{{ post.title }}</a>
                                 <p class="blog--list__item__preview">
-                                    {{ post.body | truncatechars:"300" | richtext }}
+                                    {{ post.body | truncatechars:"300" }}
                                 </p>
                                 <div class="catergory-tags mb-4">
                                     {% for tag in page.featured_blog.tags.all %}
