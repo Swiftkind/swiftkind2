@@ -16,6 +16,7 @@ from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase, Tag
+from public.image import SwiftkindImage
 
 
 class BlogPageTag(TaggedItemBase):
@@ -29,7 +30,7 @@ class BlogPage(Page):
     """ Blog page models
     """
     main_image = models.ForeignKey(
-        'wagtailimages.Image',
+        'public.SwiftkindImage',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
