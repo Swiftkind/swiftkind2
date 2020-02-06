@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags %}
+
+{% block content %}
+<main>
+    <article class="c-project">
+        {% for block in page.body %}
+            {% include_block block %}
+        {% endfor %}
+        {% with last_block=page.get_parent.specific.body|last %}
+            {% if last_block.block_type == 'contact_block' %}
+                {% include_block page.get_parent.specific.body|last %}
+            {% endif %}
+        {% endwith %}
+    </article>
+</main>
+{% endblock %}

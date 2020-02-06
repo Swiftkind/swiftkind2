@@ -1,0 +1,17 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="hiring">
+    <div class="hiring--content">
+        <h3 class="title-strong wow fadeInUp" data-wow-duration="0.4s">{{ self.hiring_title }}</h3>
+        <p class="mb-4  wow fadeInUp" data-wow-duration="0.5s">{{ self.hiring_body }}</p>
+            <a href="{% for button_link in self.button_link %}
+                {% if button_link.block_type == 'page' %}
+                    {{ button_link.value.url }}
+                {% else %}
+                    {{ button_link.value }}
+                {% endif %}
+                {% endfor %}" class="btn btn-cta mt-5 wow fadeInUp" data-wow-duration="0.6s">{{ self.button_label }}
+                <img src="{% static 'images/arrow-right.svg' %}">
+            </a>
+    </div>
+</section>

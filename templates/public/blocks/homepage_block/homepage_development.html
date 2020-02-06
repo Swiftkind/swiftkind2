@@ -1,0 +1,62 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% load pdb %}
+
+<section class=" services wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">
+    <div class="container">
+        <div class="row services--row_wrap">
+            {% for block in self %}
+                {% if block.block_type == 'content'%}
+                    <div class="col-md-3 col-lg-5 col-sm-10 d-md-none d-lg-block d-block offset-sm-1 offset-md-0">
+                        {% for image in block.value.image %}
+                            {% if image.block_type == 'svg_image' %}
+                                <img src="{{ image.value.file.url }}" class="img-fluid ">
+                            {% else %}
+                                {% image image.value original as development_image %}
+                                {% if development_image %}
+                                    <img src="{{ development_image.url }}" class="img-fluid ">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="col-md-10 col-lg-6 col-sm-12 offset-md-1 offset-lg-1 offset-sm-0">
+                <div class="services--container boxed">
+                    {% for block in self %}
+                        {% if block.block_type == 'content'%}
+                            <h6 class="svc-title wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0" >{{ block.value.content_title }}</h6>
+                            <h3 class="services--title">{{ block.value.content_services_title }}</h3>
+                            <h6 class="wow fadeInLeft mb-4"data-wow-duration="0.4s" data-wow-delay="0">{{ block.value.content_body }}</h6>
+                        {% endif %}
+                        {% if block.block_type == 'items' %}
+                            <div class="services--item">
+                                <img src="{% static 'images/check-mark.svg' %}">
+                                <div>
+                                    <h6 class="title-strong wow fadeInLeft"data-wow-duration="0.4s">{{ block.value.item_title }}</h6>
+                                    <p class="wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0">
+                                        {{ block.value.item_body }}
+                                    </p>
+                                    {% if forloop.last %}
+                                        {% for block in self %}
+                                            {% if block.block_type == 'content' %}
+                                                <a href="{% for button_link in block.value.button_link %}
+                                                    {% if button_link.block_type == 'page' %}
+                                                        {{ button_link.value.url }}
+                                                    {% else %}
+                                                        {{ button_link.value }}
+                                                    {% endif %}
+                                                    {% endfor %}" class="btn btn-cta mt-5">{{ block.value.button_label }}
+                                                    <img src="{% static 'images/arrow-right.svg' %}">
+                                                </a>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

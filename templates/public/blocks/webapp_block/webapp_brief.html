@@ -1,0 +1,21 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="c-project__brief">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <h2 class="c-project__tagline wow fadeInUp" data-wow-delay="0.1s" data-wow-duration="0.3s">{{ self.tagline_title }}</h2>
+                <h6 class="text-md wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.3s">{{ self.tagline_content_1 }}</h6>
+            </div>
+            <div class="col-md-5 offset-md-1">
+                <h6 class="wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.3s">{{ self.tagline_content_2 }}</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="title-strong wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="0.3s">{{ self.brief_title }}</h4>
+                <p class="wow fadeInUp" data-wow-delay="0.9s" data-wow-duration="0.3s">{{ self.brief_content }}</p>
+            </div>
+        </div>
+    </div>
+</section>

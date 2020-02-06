@@ -1,0 +1,33 @@
+{% load staticfiles %}
+{% load wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags %}
+{% load pdb %}
+
+<section class="process-stages">
+    <div class="container">
+        {% for block in self %}
+            {% if block.block_type == 'stage' %}
+                <div class="row mb-5">
+                    {{ block.value }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="beehive wow fadeIn" data-wow-delay="2s" data-wow-duration="0.3s">
+        {% for block in self %}
+            {% if block.block_type == 'image' %}
+                {% for image in block.value %}
+                    {% if image.block_type == 'svg_image' %}
+                        <img src="{{ image.value.file.url }}" data-rjs="3">
+                    {% else %}
+                        {% image image.value original as process_image %}
+                        {% if process_image %}
+                            <img src="{{ process_image.url }}" data-rjs="3">
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+
+</section>

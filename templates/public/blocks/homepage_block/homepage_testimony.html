@@ -1,0 +1,37 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="testimony ">
+    <div class="container">
+        {% for block in self %}
+            {% if block.block_type == 'testimony_title' %}
+                <h5 class="title-strong mb-5">{{ block.value.title }}</h5>
+            {% endif %}
+        {% endfor %}
+            <div class="swiper-container testimony--swiper">
+                <div class="swiper-wrapper">
+                    {% for block in self %}
+                        {% if block.block_type == 'members' %}
+                            <div class="swiper-slide">
+                                <p class="h6">
+                                    {{ block.value.testimony }}
+                                </p>
+                                <p class="my-4">
+                                    <span class="text-md">{{ block.value.member }} {{ block.value.position }},</span> 
+                                    <a href="{% for company_link in block.value.company_link %}
+                                        {% if company_link.block_type == 'page' %}
+                                            {{ company_link.value.url }}
+                                        {% else %}
+                                            {{ company_link.value }}
+                                        {% endif %}
+                                        {% endfor %}">{{ block.value.company_label }}
+                                    </a>
+                                </p>
+                            </div>   
+                        {% endif %}  
+                    {% endfor %} 
+                </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+    </div>
+    </div>
+</section>

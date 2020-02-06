@@ -1,0 +1,18 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="contact-us">
+    <iframe src="{% for link in self.iframe_link %}
+        {% if link.block_type == 'page' %}
+            {{ link.value.url }}
+        {% else %}
+            {{ link.value }}
+        {% endif %}
+        {% endfor %}" width="100%" height="500px" style="border:none;" class="map"></iframe>
+    <div class="container">
+        <h2 class="title-strong">{{ self.contact_title }}</h2>
+        <h6 class="mb-4">{{ self.contact_body }}</h6>
+            <div class="contact-us--email">
+                <a href="mailto:{{ self.email }}">{{ self.email }}</a>
+            </div>
+    </div>
+</section>

@@ -6,106 +6,12 @@
 
 {% block content %}
 
-<article class="homepage">
-    <section class="container hero">
-       <div class="hero--content">
-            <div id="info"></div>
-                {% if page.hero_title %} 
-                <h1 class="hero-text wow fadeInUp h2 glitch-wrapper" data-wow-duration="0.3s">
-                    {{ page.hero_title }}
+<main>
+    <article class="homepage">
+        {% for block in page.body %}
+            {% include_block block %}
+        {% endfor %}
+    </article>
+</main>
 
-                    <!-- <span class="wow fadeInUp" data-wow-duration="0.3s" data-wow-delay="0s">A</span>
-                    <div class="glitch wow fadeInUp" data-wow-duration="0.3s" data-wow-delay="0.1s" data-text="design">design</div>
-                    & 
-                    <div class="glitch wow fadeInUp" data-wow-duration="0.3s" data-wow-delay="0.2s" data-text="development">development</div>
-                     <div class="glitch m-sm" data-text="company">company</div> <span class="m-sm">for</span>  <div class="glitch m-sm" data-text="digital">digital</div> <div class="glitch m-sm" data-text="users.">users.</div> -->
-                </h1>
-                {% endif %}
-                <h5 class="wow fadeInUp" data-wow-duration="0.3s">{{ page.hero_text }}</h5>
-                {% if page.hero_cta_link %}
-                <a href="{% pageurl page.hero_cta_link %}" class="btn btn-cta link">Discover
-                    <img src="{% static 'images/arrow-right.svg' %}">
-                </a>
-                {% endif %}
-        </div>
-    </section>
-
-    <section class=" services wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">
-            <div class="container">
-                <div class="row services--row_wrap">
-                    <div class="col-md-3 col-lg-5 col-sm-10 d-md-none d-lg-block d-block offset-sm-1 offset-md-0">
-                        {% image page.feature_section_1_cover fill-930x788 as f1_image %}
-                        {% if page.feature_section_1_cover %}
-                            <img src="{{ f1_image.url }}" class="img-fluid">
-                        {% endif %}
-                    </div>
-                    <div class="col-md-10 col-lg-6 col-sm-12 offset-md-1 offset-lg-1 offset-sm-0">
-                        <div class="services--container boxed">
-                            <h6 class="svc-title wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0" >Development</h6>
-                            <h3 class="services--title">{{ page.featured_section_1_title }}</h3>
-                             <h6 class="wow fadeInLeft mb-4"data-wow-duration="0.4s" data-wow-delay="0">Building solutions through emerging technologies and guarantees agility without compromising security and quality. </h6>
-                            <div class="services--item">
-                                <img src="{% static 'images/check-mark.svg' %}">
-                                <div>
-                                    <h6 class="title-strong wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0" >Backend</h6>
-                                     <p class=" wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0">
-                                    Python (2.x & 3.x) / Django Framework / Restful APIs (DRF) / Angular JS (1.x,2 & 4) / JavaScript (ES5/ES6) / MySQL, Sqlite, PostgreSQL Linux/Ubuntu (DO, AWS) / 
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="services--item">
-                                 <img src="{% static 'images/check-mark.svg' %}">
-                                <div>
-                                    <h6 class="title-strong wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0">API</h6>
-                                    <p class="wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0">
-                                        Django Rest Framework / Linux/Ubuntu Servers / Nginx (uwsgi/gunicorn)
-                                    </p>
-                                </div>
-                            </div>
-                             <div class="services--item">
-                                <img src="{% static 'images/check-mark.svg' %}">
-                                <div>
-                                    <h6 class="title-strong wow fadeInLeft"data-wow-duration="0.4s">Cross-Platform</h6>
-                                    <p class="wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0">
-                                    Ionic / AngularJS / Firebase / Titanium
-                                    </p>
-                                    {% if page.featured_section_1 %}
-                                    <a href="{% pageurl page.featured_section_1 %}" class="btn btn-cta mt-5">Know our process
-                                        <img src="{% static 'images/arrow-right.svg' %}">
-                                    </a>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        
-                       
-                    </div>
-                </div>
-            </div>
-    </section>
-
-
-    {% if page.featured_section_2 %}
-    <!-- Our team page section -->
-    <section class="container team">
-        <div class="text-right">
-            <h2 class="title-strong mb-4">{{ page.featured_section_2.title }}</h2>
-            <h5>{{ page.featured_section_2.specific.description }}</h5>
-        </div>
-        <div class="row py-5">
-            {% for member in page.featured_section_2.specific.members.all %}
-            <div class="col-md-6 col-lg-4 py-5">
-                <div class="team--member wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0">
-                    <img src="{{ member.avatar.url }}" width="100px" height="100px" data-rjs="3">
-                        <div>
-                            <h6 class="title-strong mb-0">{{ member.fullname }}</h6>
-                        <p>{{ member.position_verbose }}</p>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-    {% endif %}
-</article>
 {% endblock %}

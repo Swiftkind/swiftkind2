@@ -1,0 +1,22 @@
+{% load staticfiles %}
+{% load wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags %}
+
+<section class="team-represent container-fluid p-0">
+    <div class="row no-gutters">
+        <div class="col-md-12">
+            <div class="team-photo rellax" data-rellax-speed="-2" data-rjs="3"></div>
+        </div>
+        
+    </div>
+</section>
+<section class="standpoint  rellax" data-rellax-speed="0">
+    <div class="container">
+        <div class="row pb-5">
+            <div class="text-center col-md-10 offset-md-1 offset-0 fadeIn wow" data-wow-delay="0s" data-wow-duration="0.3s">
+                <h4 class="title-strong mb-4">{{ self.title }}</h4>
+                <p class="standpoint--statement">{{ self.statement }}</p>
+                <p><span class="title-strong">- {{ self.member }}</span>, {{ self.position }}</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -17,7 +17,7 @@
 <header class="header--container">
     <nav class="navbar main-nav">
         <div class="container">
-            <a href="{% url 'index' %}" class="navbar-brand">
+            <a href="{% pageurl request.site.root_page %}" class="navbar-brand">
             <img src="{% static 'images/logo-2.png' %}" data-rjs="3">
             </a>
             <div class="menu-toggle"></div>
@@ -26,10 +26,10 @@
             <div class="container">
                 <div class="d-flex align-items-start justify-content-between w-100">
                     <div class="navigation-links">
-                        <a href="{% url 'index' %}" class="active">Home</a>
-                        <a href="{% url 'process' %}">Process</a>
-                        <a href="{% url 'projects' %}">Works</a>
-                        <a href="/blog/">Blog</a>
+                        <a href="{% pageurl request.site.root_page %}" class="active">Home</a>
+                        <a href="{% slugurl 'process' %}">Process</a>
+                        <a href="{% slugurl 'projects' %}">Works</a>
+                        <a href="{% slugurl 'blog' %}">Blog</a>
                     </div>
                     <div class="blog-link">
                         <p class="text-muted">Blogs</p>

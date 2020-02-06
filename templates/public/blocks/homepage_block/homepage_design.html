@@ -1,0 +1,32 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="container-fluid px-0 services">
+    <div class="row no-gutters services--container">
+        <div class="col-md-10 offset-1 col-lg-5">
+            <div class="boxed">
+                <h6 class="svc-title wow fadeInLeft"data-wow-duration="0.4s" data-wow-delay="0" >{{ self.design_title }}</h6>
+                <h3 class="services--title mb-3">{{ self.design_service_title }}</h3>
+                    <h6 class="wow fadeInLeft mb-4 "data-wow-duration="0.4s" data-wow-delay="0">{{ self.design_body }}</h6>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6 col-sm-10 offset-sm-0">
+            <div class="swiper-container services--swiper swiper__generic  wow fadeInRight" data-wow-duration="0.4s" data-wow-delay="0">
+                <div class="swiper-wrapper">
+                    {% for image in self.image %}
+                        {% if image.block_type == 'svg_image' %}
+                            <img src="{{ image.value.file.url }}" data-rjs="3">
+                        {% else %}
+                            {% image image.value original as design_image %}
+                            {% if design_image %}
+                                <img src="{{ design_image.url }}" data-rjs="3">
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 services--item text-center py-5  wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0">
+            <p class="text-md">{{ self.design_footer }}</p>
+        </div>
+    </div>
+</section>
