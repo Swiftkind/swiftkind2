@@ -6,7 +6,7 @@
                 {% for image in self.image %}
                     {% if image.block_type == 'svg_image' %}
                         <div class="swiper-slide">
-                            <img src="{{ image.value.file.url }}" data-rjs="3" class="img-fluid">
+                            <img src="{{ image.value.file.url }}" class="img-fluid">
                         </div>
                     {% else %}
                         {% image image.value original as webapp_image %}

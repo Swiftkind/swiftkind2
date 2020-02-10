@@ -22,7 +22,7 @@
                                     {% endfor %}" class="img-link">
                                     {% for image in block.value.image %}
                                         {% if image.block_type == 'svg_image' %}
-                                            <img src="{{ image.value.file.url }}" class="animated projects--img img-fluid" data-rjs="3">
+                                            <img src="{{ image.value.file.url }}" class="animated projects--img img-fluid">
                                         {% else %}
                                             {% image image.value original as project_image %}
                                             {% if project_image %}

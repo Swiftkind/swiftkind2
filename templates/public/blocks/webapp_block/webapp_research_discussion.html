@@ -27,7 +27,7 @@
                             {% else %}
                                 {% for image in block.value.avatar %}
                                     {% if image.block_type == 'svg_image' %}
-                                        <img src="{{ image.value.file.url }}" data-rjs="3" class="img-fluid mb-3 fadeInUp wow" data-wow-delay="0.1s" data-wow-duration="0.3s">
+                                        <img src="{{ image.value.file.url }}" class="img-fluid mb-3 fadeInUp wow" data-wow-delay="0.1s" data-wow-duration="0.3s">
                                     {% else %}
                                         {% image image.value original as webapp_image %}
                                         {% if webapp_image %}

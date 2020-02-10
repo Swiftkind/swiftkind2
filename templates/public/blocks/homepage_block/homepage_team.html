@@ -1,5 +1,4 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
-{% load pdb %}
 
 <section class="container team">
     <div class="text-right">
@@ -17,7 +16,7 @@
                     <div class="team--member wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0">
                         {% for image in block.value.avatar %}
                             {% if image.block_type == 'svg_image' %}
-                                <img src="{{ image.value.file.url }}" data-rjs="3" width="100" height="100">
+                                <img src="{{ image.value.file.url }}" width="100" height="100">
                             {% else %}
                                 {% image image.value original as avatar %}
                                 {% if avatar %}

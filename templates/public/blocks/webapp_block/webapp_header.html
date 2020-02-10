@@ -4,7 +4,7 @@
     <div class="c-project__main-image">
         {% for image in self.main_image %}
             {% if image.block_type == 'svg_image' %}
-                <img src="{{ image.value.file.url }}" data-rjs="3" class="wow fadeInUp img-fluid" data-wow-delay="0.2s" data-wow-duration="0.3s">
+                <img src="{{ image.value.file.url }}" class="wow fadeInUp img-fluid" data-wow-delay="0.2s" data-wow-duration="0.3s">
             {% else %}
                 {% image image.value original as webapp_image %}
                 {% if webapp_image %}

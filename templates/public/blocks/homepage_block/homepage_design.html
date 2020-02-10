@@ -14,7 +14,7 @@
                 <div class="swiper-wrapper">
                     {% for image in self.image %}
                         {% if image.block_type == 'svg_image' %}
-                            <img src="{{ image.value.file.url }}" data-rjs="3">
+                            <img src="{{ image.value.file.url }}">
                         {% else %}
                             {% image image.value original as design_image %}
                             {% if design_image %}

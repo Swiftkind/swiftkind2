@@ -19,7 +19,7 @@
                         {% if block.block_type == 'image' %}
                             {% for image in block.value.main_image %}
                                 {% if image.block_type == 'svg_image' %}
-                                    <img src="{{ image.value.file.url }}" data-rjs="3" class="mx-auto img-fluid">
+                                    <img src="{{ image.value.file.url }}" class="mx-auto img-fluid">
                                 {% else %}
                                     {% image image.value original as webapp_image %}
                                     {% if webapp_image %}

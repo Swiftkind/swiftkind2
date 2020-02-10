@@ -9,7 +9,7 @@
         </div>
         {% for image in self.image %}
             {% if image.block_type == 'svg_image' %}
-                <img src="{{ image.value.file.url }}" class="rellax clip wow fadeInLeft" data-wow-delay="0.2s" data-wow-duration="0.3s" data-rjs="3" data-rellax-speed="-5">
+                <img src="{{ image.value.file.url }}" class="rellax clip wow fadeInLeft" data-wow-delay="0.2s" data-wow-duration="0.3s" data-rellax-speed="-5">
             {% else %}
                 {% image image.value original as process_image %}
                 {% if process_image %}

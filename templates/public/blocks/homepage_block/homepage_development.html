@@ -1,5 +1,4 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
-{% load pdb %}
 
 <section class=" services wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">
     <div class="container">
@@ -13,7 +12,7 @@
                             {% else %}
                                 {% image image.value original as development_image %}
                                 {% if development_image %}
-                                    <img src="{{ development_image.url }}" class="img-fluid ">
+                                    <img src="{{ development_image.url }}" data-rjs="3" class="img-fluid ">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}

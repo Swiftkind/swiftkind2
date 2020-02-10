@@ -1,6 +1,5 @@
 {% load staticfiles %}
 {% load wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags %}
-{% load pdb %}
 
 <section class="process-stages">
     <div class="container">
@@ -17,7 +16,7 @@
             {% if block.block_type == 'image' %}
                 {% for image in block.value %}
                     {% if image.block_type == 'svg_image' %}
-                        <img src="{{ image.value.file.url }}" data-rjs="3">
+                        <img src="{{ image.value.file.url }}">
                     {% else %}
                         {% image image.value original as process_image %}
                         {% if process_image %}
