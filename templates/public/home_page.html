@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags %}
+{% load account_tags %}
+
+{% block content %}
+
+<main>
+    <article class="homepage">
+        {% for block in page.body %}
+            {% include_block block %}
+        {% endfor %}
+    </article>
+</main>
+
+{% endblock %}

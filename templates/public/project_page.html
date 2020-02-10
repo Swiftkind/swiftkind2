@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+{% load wagtailcore_tags wagtailroutablepage_tags wagtailimages_tags %}
+
+{% block content %}
+
+<main>
+    <article class="projects-page">
+        <section class="projects container">
+            <div class="swiper-container projects--swiper swiper__generic">
+                <div class="swiper-wrapper">
+                    {% for block in page.project %}
+                        <div class="swiper-slide">
+                            <div class="projects--item">
+                                <a href="{% for image_link in block.value.image_link %}
+                                    {% if image_link.block_type == 'page' %}
+                                        {{ image_link.value.url }}
+                                    {% else %}
+                                        {{ image_link.value }}
+                                    {% endif %}
+                                    {% endfor %}" class="img-link">
+                                    {% for image in block.value.image %}
+                                        {% if image.block_type == 'svg_image' %}
+                                            <img src="{{ image.value.file.url }}" class="animated projects--img img-fluid">
+                                        {% else %}
+                                            {% image image.value original as project_image %}
+                                            {% if project_image %}
+                                                <img src="{{ project_image.url }}" class="animated projects--img img-fluid" data-rjs="3">
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </a>
+                                
+                                <div class="projects--item--content services--item">
+                                    <h2 class="title-strong">{{ block.value.project_title }}</h2>
+                                    <h6>{{ block.value.project_content_1 }}</h6>
+                                    <p>{{ block.value.project_content_2 }}</p>
+                                        <!-- Add Pagination -->
+                                    <div class="slide-details">
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+        
+        
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+    </article>
+</main>
+
+{% endblock %}

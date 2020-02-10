@@ -1,0 +1,35 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="c-project__next">
+    <div class="text-center">
+        <h5 class="title-strong wow fadeInLeft" data-wow-delay="0.2s" data-wow-duration="0.3s">
+            {{ self.title }}
+            <img src="{% static 'images/arrow-right-black.svg' %}">
+        </h5>
+        <a href="{% for project_link in self.project_link %}
+            {% if project_link.block_type == 'page' %}
+                {{ project_link.value.url }}
+            {% else %}
+                {{ project_link.value }}
+            {% endif %}
+            {% endfor %}" 
+            class="d-flex {% if page.title == 'Workflow' %}align-items-start{% else %}align-items-center{% endif %} wow fadeInUp" 
+            data-wow-delay="0.5s" data-wow-duration="0.3s">
+            {% for image in self.image %}
+                {% if image.block_type == 'svg_image' %}
+                    <img src="{{ image.value.file.url }}" class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.3s">
+                {% else %}
+                    {% image image.value original as webapp_image %}
+                    {% if webapp_image %}
+                        <img src="{{ webapp_image.url }}" data-rjs="3" class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="0.3s">
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <div class="text-left">
+                <h3 class="h2 title-strong mb-0">{{ self.project_name }}</h3>
+                <h5>{{ self.project_label }}</h5>
+            </div>
+        </a>
+    </div>
+
+</section>

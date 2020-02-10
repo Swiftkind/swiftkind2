@@ -1,0 +1,23 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="c-project__screen-slides wow fadeInRight" data-wow-delay="1s" data-wow-duration="0.3s">
+        <div class="swiper-container project__screen  wow fadeInRight" data-wow-duration="0.4s" data-wow-delay="0">
+            <div class="swiper-wrapper">
+                {% for image in self.image %}
+                    {% if image.block_type == 'svg_image' %}
+                        <div class="swiper-slide">
+                            <img src="{{ image.value.file.url }}" class="img-fluid">
+                        </div>
+                    {% else %}
+                        {% image image.value original as webapp_image %}
+                        {% if webapp_image %}
+                            <div class="swiper-slide">
+                                <img src="{{ webapp_image.url }}" data-rjs="3" class="img-fluid">
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+</section>

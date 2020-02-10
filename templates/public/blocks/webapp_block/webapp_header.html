@@ -1,0 +1,19 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="container c-project__header">
+    <div class="c-project__main-image">
+        {% for image in self.main_image %}
+            {% if image.block_type == 'svg_image' %}
+                <img src="{{ image.value.file.url }}" class="wow fadeInUp img-fluid" data-wow-delay="0.2s" data-wow-duration="0.3s">
+            {% else %}
+                {% image image.value original as webapp_image %}
+                {% if webapp_image %}
+                    <img src="{{ webapp_image.url }}" data-rjs="3" class="wow fadeInUp img-fluid" data-wow-delay="0.2s" data-wow-duration="0.3s">
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        {% if self.label %}
+            <h5 class="wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="0.3s">{{ self.label }}</h5>
+        {% endif %}
+    </div>
+</section>

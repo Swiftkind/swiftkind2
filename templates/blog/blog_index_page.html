@@ -26,7 +26,7 @@
                           
                             <div class="catergory-tags">
                                {% for tag in page.featured_blog.tags.all %}
-                                <a href="{% routablepageurl request.site.root_page.specific 'tag_archive' tag %}">#{{tag}}</a>
+                                <a href="{% routablepageurl page.specific 'tag_archive' tag %}">#{{tag}}</a>
                                {% endfor %}
                            </div>
                            <div class="d-flex justify-content-between pt-3">
@@ -61,19 +61,21 @@
                                 {% if post_image %}
                                 <img src="{{ post_image.url }}" data-rjs="3" class="blog--list__item__img">
                                 {% endif %}
-                                <a href="" class="title-strong h5">{{ post.title }}</a>
+                                <a href="{% pageurl post.specific %}" class="title-strong h5">{{ post.title }}</a>
                                 <p class="blog--list__item__preview">
                                     {{ post.body | truncatechars:"300" | striptags }}
                                 </p>
                                 <div class="catergory-tags mb-4">
-                                    {% for tag in page.featured_blog.tags.all %}
-                                        <a href="{% routablepageurl request.site.root_page.specific 'tag_archive' tag %}">#{{tag}}</a>
+                                    {% for tag in post.tags.all %}
+                                        <a href="{% routablepageurl post.get_parent.specific 'tag_archive' tag %}">#{{tag}}</a>
                                     {% endfor %}
                                </div>
                                <small>5 Mins read</small>
                                <div class="author-details mt-4">
                                     {% image post.main_image fill-462x272 as post_image %}
-                                    <div class="avatar-sm mr-3" style="background-image: url('{{ post.owner.avatar.url }}')" data-rjs="2"> </div>
+                                    {% if post.owner.avatar %}
+                                        <div class="avatar-sm mr-3" style="background-image: url('{{ post.owner.avatar.url }}')" data-rjs="2"> </div>
+                                    {% endif %}
 
                                     <div>
                                         <h6 class="mb-0"><strong>{{ post.owner.fullname }}</strong></h6>

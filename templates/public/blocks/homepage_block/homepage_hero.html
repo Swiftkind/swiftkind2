@@ -1,0 +1,18 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="container hero">
+    <div class="hero--content">
+        <div id="info"></div>
+            {{ self.hero_title }}
+            <h5 class="wow fadeInUp" data-wow-duration="0.3s">{{ self.hero_body }}</h5>
+            <a href="{% for button in self.button_link %}
+                {% if button.block_type == 'page' %}
+                    {{ button.value.url }}
+                {% else %}
+                    {{ button.value }}
+                {% endif %}
+                {% endfor %}" class="btn btn-cta link">{{ self.button_label }}
+                <img src="{% static 'images/arrow-right.svg' %}">
+            </a>
+    </div>
+</section>

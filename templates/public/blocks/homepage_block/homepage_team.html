@@ -1,0 +1,36 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="container team">
+    <div class="text-right">
+        {% for block in self %}
+            {% if block.block_type == 'content' %}
+                <h2 class="title-strong mb-4">{{ block.value.team_title }}</h2>
+                <h5>{{ block.value.team_body }}</h5>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row py-5">
+        {% for block in self %}
+            {% if block.block_type == 'members' %}
+                <div class="col-md-6 col-lg-4 py-5">
+                    <div class="team--member wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0">
+                        {% for image in block.value.avatar %}
+                            {% if image.block_type == 'svg_image' %}
+                                <img src="{{ image.value.file.url }}" width="100" height="100">
+                            {% else %}
+                                {% image image.value original as avatar %}
+                                {% if avatar %}
+                                    <img src="{{ avatar.url }}" data-rjs="3" width="100" height="100">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                            <div>
+                                <h6 class="title-strong mb-0">{{ block.value.members.fullname }}</h6>
+                            <p>{{ block.value.position }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

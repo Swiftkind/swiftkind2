@@ -1,0 +1,49 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<section class="c-project__research">
+    <div class="container">
+        {% for block in self %}
+            {% if block.block_type == 'research_title' %}
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6 class="c-project__phase wow fadeInLeft" data-wow-delay="0.2s" data-wow-duration="0.3s">{{ block.value.phase }}</h6>
+                        <div class="wow fadeInLeft" data-wow-delay="0.4s" data-wow-duration="0.3s">
+                            <h3 class="title-strong">{{ block.value.research_title }}</h3>
+                            <p>{{ block.value.research_body }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% for block in self %}
+            {% if block.block_type == 'member' %}
+                {% with index=forloop.counter|add:-1 %}
+                    {% if index  == 1 or index|add:-1|divisibleby:3 and index != 0 %}
+                    <div class="row text-center justify-content-between">
+                    {% endif %}
+                        <div class="col-md-3 mb-5">
+                            {% if not block.value.avatar %}
+                                <img src="{% static 'images/projects/user-unknown.png' %}" data-rjs="3" class="img-fluid mb-3 fadeInUp wow" data-wow-delay="0.1s" data-wow-duration="0.3s">
+                            {% else %}
+                                {% for image in block.value.avatar %}
+                                    {% if image.block_type == 'svg_image' %}
+                                        <img src="{{ image.value.file.url }}" class="img-fluid mb-3 fadeInUp wow" data-wow-delay="0.1s" data-wow-duration="0.3s">
+                                    {% else %}
+                                        {% image image.value original as webapp_image %}
+                                        {% if webapp_image %}
+                                            <img src="{{ webapp_image.url }}" data-rjs="3" class="img-fluid mb-3 fadeInUp wow" data-wow-delay="0.1s" data-wow-duration="0.3s">
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            <p class="title-strong fadeInUp wow" data-wow-delay="0.2s" data-wow-duration="0.3s">{{ block.value.member }}</p>
+                            <p class="fadeInUp wow" data-wow-delay="0.4s" data-wow-duration="0.3s">{{ block.value.testimony }}</p>
+                        </div>
+                    {% if index|divisibleby:3 or forloop.counter|last %}
+                    </div>
+                    {% endif %}
+                {% endwith%}
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

@@ -21,6 +21,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'blog',
     'account',
+    'public',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -143,6 +144,7 @@ WAGTAIL_SITE_NAME = 'Swiftkind'
 WAGTAIL_USER_EDIT_FORM = 'account.forms.CustomUserEditForm'
 WAGTAIL_USER_CREATION_FORM = 'account.forms.CustomUserCreationForm'
 WAGTAIL_USER_CUSTOM_FIELDS = ['email', 'position', 'avatar']
+WAGTAILIMAGES_IMAGE_MODEL = 'public.SwiftkindImage'
 
 # Allow any settings to be defined in local_settings.py which should be
 # ignored in your version control system allowing for settings to be

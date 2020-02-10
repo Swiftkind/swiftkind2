@@ -5,6 +5,9 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import password_validation
 
+from wagtail.snippets.models import register_snippet
+
+
 
 def upload_avatar_to(instance, filename):
     filename, ext = os.path.splitext(filename)
@@ -41,6 +44,7 @@ class UserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 
+@register_snippet
 class User(AbstractBaseUser, PermissionsMixin):
     """ Custom user model
     """

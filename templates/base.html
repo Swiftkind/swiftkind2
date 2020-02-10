@@ -63,7 +63,7 @@
         <!-- PLUG IN -->
        
         <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-        {% if not page %}
+        {% if page  == request.site.root_page.specific %}
         <script type="text/javascript" src="{% static 'js/particle.js' %}"></script>
         {% endif %}
 
