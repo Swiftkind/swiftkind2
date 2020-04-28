@@ -109,6 +109,8 @@
                 
             </div>
         </section>
+
+        {% comment %}
        <!--  <section class="projects container">
             <div class="swiper-container projects--swiper  wow fadeInLeft" data-wow-duration="0.3s" data-wow-delay="0">
                 <div class="swiper-wrapper">
@@ -151,6 +153,7 @@
             </div>
         </section>
          -->
+         {% endcomment %}
        
         <section class="container team">
             <div class="text-right">
@@ -310,21 +313,18 @@
                         <div class="swiper-wrapper">
                           <div class="swiper-slide">
                               <p class="h6">
-                                  We also take immense pride on our dedication to our clients through swift response and exceptional customer service. With full enthusiasm, we seek to build solid long term relationship based on trust.
-                              </p>
-                              <p class="my-4"><span class="text-md">JOHN DOE CTO,</span> <a href="">WHATEVER INC.</a></p>
+                                We've been working with Swiftkind on a day-to-day basis for more than two years. They are working with us on mission-critical software that is being used by government agencies, healthcare organizations, and global enterprises with employees in every continent using our software. Swiftkind's developers strive for excellence in their work, and they have always been willing to step up, and they will work through issues until they are completely resolved. They've been willing to tackle complex migrations when on-boarding new customers, and their developers have always kept an open mind when approaching technical challenges. I am truly grateful for our partnership.                              </p>
+                              <p class="my-4"><span class="text-md">
+                                <img src="{% static 'images/client1.png' %}" height="24em">,
+                              </span><span>
+                                <img src="{% static 'images/client1_comp.png' %}" height="24rem">
+                              </span></p>
                             </div>
-                          <div class="swiper-slide">
-                              <p class="h6">
-                                  We also take immense pride on our dedication to our clients through swift response and exceptional customer service. With full enthusiasm, we seek to build solid long term relationship based on trust.
-                              </p>
-                              <p class="my-4"><span class="text-md">JOHN DOE CTO,</span> <a href="">WHATEVER INC.</a></p>
-                            </div>
-                         
-                              
                         </div>
                     <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
+                    {% comment %}
+                    <!-- <div class="swiper-pagination"></div> -->
+                    {% endcomment %}
             </div>
           </div>
         </section>
